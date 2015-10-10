@@ -1,5 +1,6 @@
 import sqlite3 as lite
 import pandas as pd
+import sys
 
 con = lite.connect('lesson3-3_challenge.db')
 
@@ -36,18 +37,21 @@ with con:
 	cur.execute("CREATE TABLE cities (name text, state text)")
 	cur.execute("CREATE TABLE weather (city text, year integer, warm_month text, cold_month text, average_high integer)")
 	
+	#get user input
+	warmMonthInput = raw_input("Please input the warmest month you want to check: ")
+
 	#insert data into the two tables
 	cur.executemany("INSERT INTO cities VALUES(?,?)", cities)
 	cur.executemany("INSERT INTO weather VALUES(?,?,?,?,?)", weather)
 
 	#join the data together
-	query = "SELECT name, state, year, warm_month, cold_month, average_high FROM cities LEFT OUTER JOIN weather ON name = city WHERE warm_month = 'July'"
+	query = "SELECT name, state, year, warm_month, cold_month, average_high FROM cities LEFT OUTER JOIN weather ON name = city WHERE warm_month = '{}'".format(warmMonthInput)
 
 	#load into Pandas Dataframe
 	df = pd.read_sql(query, con)
 	
 	#print the setence
-	output = 'The cities that are warmest in July are: '
+	output = 'The cities that are warmest in {} are: '.format(warmMonthInput)
 	data = zip(df['name'], df['state']) #zip two lists together
 	for name, state in data:
 		output = output + name + ', ' + state + ', '
