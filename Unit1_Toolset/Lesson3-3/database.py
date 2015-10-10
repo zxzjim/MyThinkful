@@ -48,7 +48,7 @@ with con:
 	
 	#print the setence
 	output = 'The cities that are warmest in July are: '
-	data = zip(df['name'], df['state'])
+	data = zip(df['name'], df['state']) #zip two lists together
 	for name, state in data:
 		output = output + name + ', ' + state + ', '
 	print output
