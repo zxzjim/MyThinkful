@@ -47,8 +47,9 @@ with con:
 	df = pd.read_sql(query, con)
 	
 	#print the setence
-	print df.loc[:,['name', 'state']]
-	for data in df.loc[:,['name', 'state']]:
-		print type(data)
-	#print 'The cities that are warmest in July are: ' + df['name'] + ', ' + df['state']
+	output = 'The cities that are warmest in July are: '
+	data = zip(df['name'], df['state'])
+	for name, state in data:
+		output = output + name + ', ' + state + ', '
+	print output
 
