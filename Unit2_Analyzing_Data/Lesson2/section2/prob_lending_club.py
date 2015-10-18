@@ -3,7 +3,7 @@ import pandas as pd
 import scipy.stats as stats
 
 loansData = pd.read_csv('loansData.csv')
-loansData.dropna(inplace = True)
+loansData.dropna(inplace = True) #clean the data
 
 loansData.boxplot(column='Amount.Requested')
 plt.savefig('boxplot.png')
