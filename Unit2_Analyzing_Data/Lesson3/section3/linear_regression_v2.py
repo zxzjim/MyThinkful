@@ -14,11 +14,11 @@ loansData['FICO.Score'] = loansData['FICO.Range'].map(lambda x: min(map(int, x.s
 #plot the histogram of FICO scores
 plt.figure()
 p = loansData['FICO.Score'].hist()
-plt.show('FICO_Score.png')
+#plt.show('FICO_Score.png')
 
 #create a scatterplot matrix
 a = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10), diagonal='hist')
-plt.show('scatter_matrix.png')
+#plt.show('scatter_matrix.png')
 
 #find the linear regression
 intrate = loansData['Interest.Rate']
