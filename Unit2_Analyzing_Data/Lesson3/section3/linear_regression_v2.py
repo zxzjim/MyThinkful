@@ -26,13 +26,13 @@ loanamt = loansData['Amount.Requested']
 fico = loansData['FICO.Score']
 
 y = np.matrix(intrate).transpose()
-x1 = np.matrix(loanamt).transpose()
-x2 = np.matrix(fico).transpose()
+x1 = np.matrix(fico).transpose()
+x2 = np.matrix(loanamt).transpose()
 x = np.column_stack([x1,x2])
 
 #create linear model
 X = sm.add_constant(x)
 model = sm.OLS(y,X)
 f = model.fit()
-print f.summary
+print f.summary()
 
