@@ -7,48 +7,21 @@ import matplotlib.pyplot as plt
 '''
 What is the probability of getting a loan from the Lending Club 
 for $10,000 at an interest rate ≤ 0.12, with a FICO score of 750?
+
+now clean the data
 '''
 
-loansData = pd.read_csv('loansData_clean.csv')
+#read the data
+loansData = pd.read_csv('loansData.csv')
+
+#clean the data
+loansData['Interest.Rate'] = loansData['Interest.Rate'].map(lambda x: float(x.strip('%'))/100)
+loansData['Loan.Length'] = loansData['Loan.Length'].map(lambda x: x.strip(' months'))
+loansData['FICO.Score'] = loansData['FICO.Range'].map(lambda x: min(map(int, x.split('-'))))
 
 loansData['IR_TF'] = loansData['Interest.Rate']>=.12
+loansData['IR_TF'] = loansData['IR_TF'].astype(int)
 loansData['Intercept'] = 1.0
-ind_vars = ['FICO.Range', 'Amount.Requested', 'Intercept']
 
-
-logit = sm.Logit(loansData['IR_TF'], loansData[ind_vars])
-result = logit.fit()
-coeff = result.params
-print coeff
-
-FICOScore = 750
-LoanAmount = 10000
-
-
-
-def logistic_function(FICOScore, LoanAmount, coeff):
-	interest_rate = coeff['Intercept'] + coeff['FICO.Range']*FICOScore + coeff['Amount.Requested']*LoanAmount
-	p = 1/(1+math.exp(coeff['Intercept'] + coeff['FICO.Range']*FICOScore + coeff['Amount.Requested']*LoanAmount))
-	return p
-
-p = logistic_function(750, 10000, coeff)
-print 'The probability of getting the loan is '+str(p)
-
-Fico = range(550, 950, 10)
-p_plus = []
-p_minus = []
-p = []
-for j in Fico:
-    p_plus.append(1/(1+math.exp(coeff['Intercept'] + coeff['FICO.Range']*j + coeff['Amount.Requested']*LoanAmount)))
-    p_minus.append(1/(1+math.exp(-coeff['Intercept'] - coeff['FICO.Range']*j - coeff['Amount.Requested']*LoanAmount)))
-    p.append(logistic_function(j, 10000,coeff))
-
-plt.plot(Fico, p_plus, label = 'p(x) = 1/(1+exp(b+mx))', color = 'blue')
-plt.hold(True)
-plt.plot(Fico, p_minus, label = 'p(x) = 1/(1+exp(-b-mx))', color = 'green')    
-plt.hold(True)
-plt.plot(Fico, p, 'ro', label = 'Decision for 10000 USD')
-plt.legend(loc='upper right')
-plt.xlabel('Fico Score')
-plt.ylabel('Probability and decision, yes = 1, no = 0')
-plt.show()
+#save the clean data
+loansData.to_csv('loansData_clean.csv', header=True, index=False)
