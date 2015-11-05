@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 '''
 What is the probability of getting a loan from the Lending Club 
 for $10,000 at an interest rate ≤ 0.12, with a FICO score of 750?
+
+now analysis the data
 '''
 
 loansData = pd.read_csv('loansData_clean.csv')

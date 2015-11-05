@@ -1,0 +1,12 @@
+https://github.com/shubhabrataroy/Thinkful/blob/master/U2L4.py
+
+http://www.appstate.edu/~whiteheadjc/service/logit/intro.htm
+
+log(p/1-p) = mx+b
+p is the probability of getting the loan
+p/1-p = e^(mx+b)
+p(1+e^(mx+b)) = e^(mx+b)
+p = 1/(1+e^-(mx+b))
+
+support@thinkful.com  
+varun@thinkful.com
