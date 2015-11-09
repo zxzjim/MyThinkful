@@ -1,0 +1,34 @@
+1. what is df_adv[]?
+	It's just the data frame with the name "advertisement"
+
+2. don't quite understand the following code:
+	import statsmodels.formula.api as smf
+
+	# encode df.famhist as a numeric via pd.Factor
+	df['famhist_ord'] = pd.Categorical(df.famhist).labels
+
+	est = smf.ols(formula="chd ~ famhist_ord", data=df).fit()
+
+3. alpha 0.3?
+	plt.scatter(df.logincome, df.mdvis, alpha=0.3)
+
+4. why * makes it interactive? how to understand the formula? the parameter in plot()?
+	plt.scatter(df.logincome, df.mdvis, alpha=0.3)
+	plt.xlabel('Log income')
+	plt.ylabel('Number of visits')
+
+	est = smf.ols(formula='mdvis ~ hlthp * logincome', data=df).fit()
+
+	plt.plot(income_linspace, est.params[0] + est.params[1] * 0 + est.params[2] * income_linspace + 
+	         est.params[3] * 0 * income_linspace, 'r')
+	plt.plot(income_linspace, est.params[0] + est.params[1] * 1 + est.params[2] * income_linspace + 
+	         est.params[3] * 1 * income_linspace, 'g')
+
+	short_summary(est)
+
+5. difference between polynomial regression and multivariable regression?
+
+6. How to understand the parameters?
+	plt.plot(x.lstat, poly_1.predict(x), 'b-', label='Poly n=1 $R^2$=%.2f' % poly_1.rsquared, alpha=.9)
+
+7. 
