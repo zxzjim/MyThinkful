@@ -9,8 +9,11 @@
 
 	est = smf.ols(formula="chd ~ famhist_ord", data=df).fit()
 
+		#it's doing input 5, easy to take in more categories and calculate the weight of each
+
 3. alpha 0.3?
 	plt.scatter(df.logincome, df.mdvis, alpha=0.3)
+	alpha is transparency
 
 4. why * makes it interactive? how to understand the formula? the parameter in plot()?
 	plt.scatter(df.logincome, df.mdvis, alpha=0.3)
@@ -31,4 +34,9 @@
 6. How to understand the parameters?
 	plt.plot(x.lstat, poly_1.predict(x), 'b-', label='Poly n=1 $R^2$=%.2f' % poly_1.rsquared, alpha=.9)
 
-7. 
+7. where can i find the time series data?
+
+
+
+-------------------------------------------
+https://github.com/shubhabrataroy/Thinkful/blob/master/U2L5.py

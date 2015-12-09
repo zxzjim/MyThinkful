@@ -22,3 +22,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Data Sources #
+*.csv
+*.xlsx
