@@ -26,3 +26,6 @@ Thumbs.db
 # Data Sources #
 *.csv
 *.xlsx
+
+# Documents #
+*.pdf
