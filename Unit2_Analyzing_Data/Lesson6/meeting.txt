@@ -1,0 +1,3 @@
+http://conference.scipy.org/proceedings/scipy2011/pdfs/statsmodels.pdf
+https://www.kaggle.com/c/tourism1
+https://www.kaggle.com/c/dsg-hackathon
