@@ -77,3 +77,4 @@ for station in r['stationBeanList']:
 with con:
     for k, v in id_bikes.iteritems():
         cur.execute('UPDATE available_bikes SET _'+ str(k) + '=' + str(v) + ' WHERE execution_time ='+ exec_time.strftime('%s') +';')
+        
