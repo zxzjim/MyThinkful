@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.style.use('ggplot')
+from sklearn.naive_bayes import GaussianNB
 
 
 df_raw = pd.read_csv('ideal_weight.csv')
@@ -40,3 +41,19 @@ df_raw['sex_mapping'] = df_raw['sex'].map(lambda x: sex_mapping[x])
 print df_raw.head()
 df_raw['sex_mapping'].plot.hist()
 plt.show()
+
+
+# Fit a Naive Bayes classifier of sex to actual weight, ideal weight, and diff.
+features = df_raw.loc[:, ['actual', 'ideal', 'diff']]
+Y = df_raw['sex_mapping']
+clf = GaussianNB()
+model = clf.fit(features, Y)
+
+# How many points were mislabeled? How many points were there in the
+# dataset, total?
+pred = model.predict(features)
+print "Number of mislabeled points is: %d, out of total number of %d points." % ((Y != pred).sum(), features.shape[0])
+# Predict the sex for an actual weight of 145, an ideal weight of 160, and a diff of -15.
+print clf.predict([[145, 160, -15]])
+# Predict the sex for an actual weight of 160, an ideal weight of 145, and a diff of 15.
+print clf.predict([[160, 145, 15]])

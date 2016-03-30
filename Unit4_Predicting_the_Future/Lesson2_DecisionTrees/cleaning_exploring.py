@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
 import re
 
 df_features = pd.read_csv('/Users/zhangxinzhou/DataScientist/Thinkful/Unit4_Predicting_the_Future/Lesson2_DecisionTrees/UCI HAR Dataset/features.txt', delim_whitespace=True, index_col=0, header=None)
@@ -68,5 +69,6 @@ print df.shape[0]
 print df['activity']
 print df.columns.values
 
+matplotlib.style.use('ggplot')
 df[['tAcc_Mean_X', 'tAcc_Mean_Y', 'tAcc_Mean_Z']].plot()
 plt.show()
