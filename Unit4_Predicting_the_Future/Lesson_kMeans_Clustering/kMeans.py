@@ -50,11 +50,23 @@ print un_notnull.values
 
 un_sub = un_notnull[['GDPperCapita', 'lifeFemale']].values
 print un_sub
-centroids, _ = kmeans(un_sub, 3)
-idx, idxdist = vq(un_sub, centroids)
-print idx
-print idxdist
-print len(idx)
+
+cluster_numbers = {}
+for k in range(1, 11):
+    centroids, _ = kmeans(un_sub, k)
+    idx, idxdist = vq(un_sub, centroids)
+    # print idx
+    # print idxdist
+    # print len(idx)
+    results_df = pd.DataFrame({'idx': idx, 'idxdist': idxdist})
+    # print results_df.head()
+    cluster_numbers[k]=results_df['idxdist'].mean()
+print cluster_numbers
+result = pd.DataFrame(cluster_numbers.items(), columns=['cluster_numbers', 'avg_dist'])
+print result
+plt.plot(result['cluster_numbers'], result['avg_dist'])
+plt.show()
+
 
 un_notnull['GDPperCapita_vs_lifeFemale_cluster'] = idx
 sns.lmplot('GDPperCapita', 'lifeFemale',
