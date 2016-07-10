@@ -254,14 +254,12 @@ train_merged.to_csv('train_merged_f.csv')
 train_merged.head()
 
 
-# In[ ]:
-
-multiple linear regression
-SVM
-random forest
-
-vis: scatter matrix
-    confusion matrix
-    roc curve
-    word cloud: https://github.com/shubhabrataroy/Thinkful/blob/master/Curriculum/SetNoteBook.ipynb
-
+# multiple linear regression
+# SVM
+# random forest
+# 
+# vis: scatter matrix
+#     confusion matrix
+#     roc curve
+#     word cloud: https://github.com/shubhabrataroy/Thinkful/blob/master/Curriculum/SetNoteBook.ipynb
+# 
