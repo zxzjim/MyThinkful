@@ -250,7 +250,7 @@ kw, sim_kw_title
 
 # In[156]:
 
-sim_kw_desc = check_similarity_word_list(kw_syn, texts_t[2])
+sim_kw_desc = check_similarity_word_words(kw_syn, texts_t[2])
 kw, sim_kw_desc
 
 
@@ -258,20 +258,20 @@ kw, sim_kw_desc
 
 # In[157]:
 
-def cal_similarities_mean(similarities_list):
-    sims = [v for k, v in similarities_list.iteritems()]
-    # drop na
-    sims = np.array([e for e in sims if e != None])
-    return sims.mean()
+# def cal_similarities_mean(similarities_list):
+#     sims = [v for k, v in similarities_list.iteritems()]
+#     # drop na
+#     sims = np.array([e for e in sims if e != None])
+#     return sims.mean()
 
 
-# In[158]:
+# # In[158]:
 
-sim_kw_title_mean = cal_similarities_mean(sim_kw_title)
-print sim_kw_title_mean
+# sim_kw_title_mean = cal_similarities_mean(sim_kw_title)
+# print sim_kw_title_mean
 
-sim_kw_desc_mean = cal_similarities_mean(sim_kw_desc)
-print sim_kw_desc_mean
+# sim_kw_desc_mean = cal_similarities_mean(sim_kw_desc)
+# print sim_kw_desc_mean
 
 
 # ### run on all rows
